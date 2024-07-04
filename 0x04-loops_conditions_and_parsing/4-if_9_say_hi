@@ -11,4 +11,4 @@ do
 	fi
 	echo "Best School"
 	(( count ))
-echo
+done
