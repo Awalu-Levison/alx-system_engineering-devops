@@ -4,6 +4,6 @@
 Host *
     PasswordAuthentication no
     identityFile ~/.ssh/school
-    #authorized_keys yes
-    #HostName 54.83.139.181
-    #user ubuntu
+    authorized_keys yes
+    HostName 54.83.139.181
+    user ubuntu
