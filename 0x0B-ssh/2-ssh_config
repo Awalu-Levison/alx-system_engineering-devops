@@ -2,7 +2,7 @@
 #Connecting to remote server without using password
 
 Host *
-    PasswordAuthentication no
+    passwordAuthentication no
     identityFile ~/.ssh/school
     authorized_keys yes
     HostName 54.83.139.181
