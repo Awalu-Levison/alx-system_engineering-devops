@@ -4,3 +4,6 @@
 Host *
     passwordAuthentication no
     identityFile ~/.ssh/school
+    HashKnownHosts yes
+    HostName 54.83.139.181
+    user ubuntu
