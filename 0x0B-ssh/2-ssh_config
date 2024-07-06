@@ -4,6 +4,7 @@
 Host *
     passwordAuthentication no
     identityFile ~/.ssh/school
+    SendEnv LANG LC_*
     authorized_keys yes
     HostName 54.83.139.181
     user ubuntu
