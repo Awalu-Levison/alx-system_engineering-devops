@@ -2,8 +2,8 @@
 #Connecting to remote server without using password
 
 Host *
-    passwordAuthentication no
+    PasswordAuthentication no
     identityFile ~/.ssh/school
-    HashKnownHosts yes
-    HostName 54.83.139.181
-    user ubuntu
+    #authorized_keys yes
+    #HostName 54.83.139.181
+    #user ubuntu
