@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Installing nginx on a remote server
+
+echo -e "Updating and installing nginx server\n"
+sudp apt-get update -y && \
+	sudo apt-get install nginx -y
+
+echo -e "\nStarting nginx service\n"
+sudo service start nginx
+
+# Allow ginx server on firewall
+sudo ufw allow 'Nginx HTTP'
+
+# Give perssion to website files
+sudo chwon -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# Backup original index
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+# Create new index
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+
+# Restarting nginx server
+sudo service nginx restart
+
+#Server completion
+echo -e "\nCompleted. ✅\n"
