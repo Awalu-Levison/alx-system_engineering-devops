@@ -4,18 +4,18 @@
 
 set -e
 echo -e "Update and install nginx server. \n"
-sudo apt-get -y -qq && sudo apt-get install nginx -y
+sudo apt-get update -y -qq && sudo apt-get install nginx -y
 
 echo -e "\nServer initializing\n"
-# Satring Nginx service
+# Starting Nginx service
 sudo service nginx start
 
 # Allow nginx on firewall
 sudo ufw allow 'Nginx HTTP'
 
 # User ownership to website files
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chown -R 755 /var/www
+sudo chmod -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
 
 # Backup
 if [ -f /var/www/html/index.nginx-debian.html ]; then
