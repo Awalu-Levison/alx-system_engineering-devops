@@ -23,10 +23,10 @@ cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.b
 # Creating new index
 echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
 
-# Set up /redirect_me to a youtube video
+# Redirect the user to the link of youtube channel
 sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
-# Restarting nginx
+# Restart the web server (nginx)
 sudo service nginx restart
 
 echo -e "\nSuccessfully configured a redirection page.\n"
