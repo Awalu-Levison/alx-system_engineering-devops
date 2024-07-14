@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# I used the following command to debug apache2 web server
+sudo service apache2 start
+
