@@ -1,24 +1,36 @@
 #!/usr/bin/python3
-"""
-A python script that uses REST API to fetch employee's information
-"""
+'''
+gather employee data from API
+'''
 
+import re
 import requests
 import sys
 
+REST_API = "https://jsonplaceholder.typicode.com"
 
-if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com/"
-
-    if len(sys.argv) > 1
-    user = requests.get(url + "users/{}".format(employee_id)).json()
-
-    user_args = {"userId": employee_id}
-    todos = requests.get(url + "todos", user_args).json()
-
-    completed = [t.get("title") for t in todos if t.get("completed") is True]
-
-    print("Employee {} is done with tasks({}/{}):".format(
-        user.get("employee_name"), len(completed), len(todos)))
-
-    [print("\t {}".format(complete)) for complete in completed]
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        """
+        r'd+': regular expression pattern matches one or more digits
+        (d represents any digit,
+        and + means one or more).
+        """
+        if re.fullmatch(r'\d+', sys.argv[1]):
+            id = int(sys.argv[1])
+            req = requests.get('{}/users/{}'.format(REST_API, id)).json()
+            task_req = requests.get('{}/todos'.format(REST_API)).json()
+            emp_name = req.get('name')
+            tasks = list(filter(lambda x: x.get('userId') == id, task_req))
+            completed_tasks = list(filter(lambda x: x.get('completed'), tasks))
+            print(
+                    'Employee {} is done with tasks({}/{}):'.format(
+                        emp_name,
+                        len(completed_tasks),
+                        len(tasks)
+                        )
+                    )
+            """print completed tasks per user"""
+            if len(completed_tasks) > 0:
+                for task in completed_tasks:
+                    print('\t {}'.format(task.get('title')))
