@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 A script that, using this REST API
-for a given employee ID, 
+for a given employee ID,
 eturns information about his/her TODO list progress.
 """
 import requests
@@ -22,4 +22,3 @@ if __name__ == "__main__":
         user.get("name"), len(completed), len(todos)))
 
     [print("\t {}".format(complete)) for complete in completed]
-
