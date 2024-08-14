@@ -4,7 +4,6 @@
 import csv
 import requests
 import sys
-"""Modules imported for usage"""
 
 if __name__ == '__main__':
     """Get system parameters"""
