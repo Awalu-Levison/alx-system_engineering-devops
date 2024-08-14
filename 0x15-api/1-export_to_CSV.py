@@ -26,6 +26,3 @@ if __name__ == '__main__':
             title_task = task.get('title')
             csvfile.write('"{}","{}","{}","{}"\n'.format(
                 user, user_name, completed, title_task))
-
-except Exception as e:
-    print(f"Error occured: {e}")
