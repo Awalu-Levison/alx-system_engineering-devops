@@ -19,11 +19,9 @@ def display_employee_info():
         user_id = user["id"]
 
         user_response = requests.get(url + f"todos?userId={user_id}")
-
         task_list = user_response.json()
 
         employee_data[user_id] = []
-
         for task in task_list:
             task_data = {
                     "username": user.get("username"),
@@ -32,9 +30,7 @@ def display_employee_info():
                     }
 
             employee_data[user_id].append(task_data)
-
             return employee_data
-
 
     if __name__ == "__main__":
         employee_data = display_employee_info()
