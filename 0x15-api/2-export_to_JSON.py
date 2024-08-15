@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-'''
+"""
 gather employee data from API
-'''
+"""
 
 import json
 import requests
@@ -9,17 +9,17 @@ import sys
 
 
 if __name__ == '__main__':
-    url = "https://jsonplaceholder.typicode.com"
+    url = "https://jsonplaceholder.typicode.com/"
 
     userID = sys.argv[1]
 
     user = requests.get(url + "users/{}".format(userID)).json()
 
     username = user.get("username")
-    usage_param = {"userID": userID}
-    todos = requests.get(url + "todos", usage_param=usage_param)
+    params = {"userID": userID}
+    todos = requests.get(url + "/todos", params={"userID": userID}).json()
 
-    data_to_export = {userId: []}
+    data_to_export = {userID: []}
 
     for todo in todos:
         data_format = {
