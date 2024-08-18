@@ -30,11 +30,10 @@ def display_employee_info():
                     }
 
             employee_data[user_id].append(task_data)
-        return employee_data
+            return employee_data
+
+    if __name__ == "__main__":
+        employee_data = display_employee_info()
 
     with open("todo_all_employees.json", "w") as json_file:
         json.dump(employee_data, json_file, indent=4)
-
-
-if __name__ == "__main__":
-    employee_data = display_employee_info()
