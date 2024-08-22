@@ -1,4 +1,5 @@
-# Modify the OS configuration to add holberton as new user
+# Change the OS configuration so that it is possible
+# to login with the holberton without errors
 
 exec {'OS security change file':
   command => 'sed -i "s/holberton/foo/" /etc/security/limits.config',
