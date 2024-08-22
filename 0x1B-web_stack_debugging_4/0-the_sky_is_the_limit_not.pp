@@ -1,18 +1,6 @@
-# Increase the number of requests a web server can handle
-# for good performance
+# fix nginx to accept and serve more requests
 
-# Increase the number of ULIMIT to accomodate more requests
-exec {
-  # Change the ULIMIT value
-  command => '/bin/sed -i "s/15/4096/" /etc/default/nginx',
-  # direct the command to the following path
-  path    => '/usr/local/bin/:/bin/',
-}
-
-# Restart the web server
-exec {'nginx-restart':
-  # Restart the nginx server
-  command => '/etc/init.d/nginx restart',
-  # direct the path for the command
-  path    => '/etc/init.d/',
+exec {'modify ULIMIT':
+  command => 'sed -i "s/15/10000/" /etc/default/nginx && sudo service nginx restart',
+  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games',
 }
